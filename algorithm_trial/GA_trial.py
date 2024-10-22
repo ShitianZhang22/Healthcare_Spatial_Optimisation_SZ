@@ -18,6 +18,11 @@ def fitness_func(ga_instance, solution, solution_idx):
     return fitness
 
 
+def on_generation(ga):
+    print("Generation", ga.generations_completed)
+    print(ga.population)
+
+
 fitness_function = fitness_func
 
 num_generations = 50
@@ -48,8 +53,11 @@ ga_instance = pygad.GA(num_generations=num_generations,
                        keep_parents=keep_parents,
                        crossover_type=crossover_type,
                        mutation_type=mutation_type,
-                       mutation_percent_genes=mutation_percent_genes)
+                       mutation_percent_genes=mutation_percent_genes,
+                       on_generation=on_generation,
+                       )
 ga_instance.run()
+ga_instance.plot_fitness()
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 print("Parameters of the best solution : {solution}".format(solution=solution))
 print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
