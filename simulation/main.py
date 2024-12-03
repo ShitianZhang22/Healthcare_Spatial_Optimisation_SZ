@@ -40,7 +40,7 @@ class Clinic(mesa.Model):
 
     def gen_patient(self):
         """
-        Generate and place new patients at the entrance
+        Generate and place a new patient at the entrance
         """
         a = Patient(self)
         self.grid.place_agent(a, (0, 0))
